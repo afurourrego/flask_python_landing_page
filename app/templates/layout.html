@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" href="{{url_for('static', filename = 'images/icono.ico')}}">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}{% endblock %}</title>
+
+		<!--estilos de bootstrap-->
+		<link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+		<!--stilos propios-->
+		<link href="{{url_for('static', filename = 'css/styles.css')}}" rel="stylesheet">
+	</head>
+	<body>
+		<!-- Static navbar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="http://localhost:5000/">{% block company_name %}{% endblock %}</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="http://localhost:5000/">Inicio</a></li>
+						<li><a href="http://localhost:5000/#quienes_somos">Quienes Somos</a></li>
+						<li><a href="http://localhost:5000/#productos_servicios">Productos y Servicios</a></li>
+						<li><a href="http://localhost:5000/py_admin">Admin</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</nav>
+
+		{% block content %}
+		{% endblock %}
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+		<script>window.jQuery || document.write('<script src="{{url_for('static', filename = 'js/jquery.min.js')}}"><\/script>')</script>
+		<script type="text/javascript" src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+
+	</body>
+</html>

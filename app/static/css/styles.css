@@ -1,0 +1,23 @@
+body {
+  min-height: 2000px;
+  padding-top: 50px;
+}
+
+.navbar-static-top {
+  margin-bottom: 19px;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.tabla {
+	padding: 45px 15px 15px;
+    margin: 0 -15px 15px;
+}
+

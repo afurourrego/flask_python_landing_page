@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}
+Iniciar Sesión
+{% endblock %}
+{% block content %}
+<h1>Formulario de Iniciar Sesión</h1>
+<form action="{{ url_for('iniciar_sesion') }}" method="post">
+	<p>
+		<input type="text" name="usuario">
+	</p>
+	<p>
+		<input type="password" name="contrasena">
+	</p>
+	<input type="submit" value="Iniciar Sesión">
+</form>
+{% endblock %}
