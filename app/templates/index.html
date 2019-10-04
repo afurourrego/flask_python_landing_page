@@ -10,6 +10,18 @@
 
 {% block content %}
 <!-- Masthead -->
+<style media="screen">
+	.bg-primary{
+		background-color: {{color_fondo}} !important;
+	}
+	.portfolio .portfolio-item .portfolio-item-caption {
+		background-color: {{color_fondo}} !important;
+	}
+	.btn-primary {
+    background-color: {{color_fondo}} !important;
+    border-color: {{color_fondo}} !important;
+}
+</style>
 <header class="masthead bg-primary text-white text-center">
 	<div class="container d-flex align-items-center flex-column">
 
@@ -53,7 +65,7 @@
 							<i class="fas fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img class="img-fluid" src="static/img/portfolio/cabin.png" alt="">
+					<img class="img-fluid" src="{{pic_1.url}}" alt="">
 				</div>
 			</div>
 
@@ -65,7 +77,7 @@
 							<i class="fas fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img class="img-fluid" src="static/img/portfolio/cake.png" alt="">
+					<img class="img-fluid" src="{{pic_2.url}}" alt="">
 				</div>
 			</div>
 
@@ -77,7 +89,7 @@
 							<i class="fas fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img class="img-fluid" src="static/img/portfolio/circus.png" alt="">
+					<img class="img-fluid" src="{{pic_3.url}}" alt="">
 				</div>
 			</div>
 
@@ -89,7 +101,7 @@
 							<i class="fas fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img class="img-fluid" src="static/img/portfolio/game.png" alt="">
+					<img class="img-fluid" src="{{pic_4.url}}" alt="">
 				</div>
 			</div>
 
@@ -101,7 +113,7 @@
 							<i class="fas fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img class="img-fluid" src="static/img/portfolio/safe.png" alt="">
+					<img class="img-fluid" src="{{pic_5.url}}" alt="">
 				</div>
 			</div>
 
@@ -113,7 +125,7 @@
 							<i class="fas fa-plus fa-3x"></i>
 						</div>
 					</div>
-					<img class="img-fluid" src="static/img/portfolio/submarine.png" alt="">
+					<img class="img-fluid" src="{{pic_6.url}}" alt="">
 				</div>
 			</div>
 
@@ -210,17 +222,14 @@
 			<!-- Footer Social Icons -->
 			<div class="col-12 col-lg-4">
 				<h4 class="text-uppercase mb-4">¡Siguenos!</h4>
-				<a class="btn btn-outline-light btn-social mx-1" href="#">
+				<a class="btn btn-outline-light btn-social mx-1" href="{{facebook}}">
 					<i class="fab fa-fw fa-facebook-f"></i>
 				</a>
-				<a class="btn btn-outline-light btn-social mx-1" href="#">
+				<a class="btn btn-outline-light btn-social mx-1" href="{{twitter}}">
 					<i class="fab fa-fw fa-twitter"></i>
 				</a>
-				<a class="btn btn-outline-light btn-social mx-1" href="#">
-					<i class="fab fa-fw fa-linkedin-in"></i>
-				</a>
-				<a class="btn btn-outline-light btn-social mx-1" href="#">
-					<i class="fab fa-fw fa-dribbble"></i>
+				<a class="btn btn-outline-light btn-social mx-1" href="{{instagram}}">
+					<i class="fab fa-fw fa-instagram"></i>
 				</a>
 			</div>
 
@@ -258,15 +267,15 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{pic_1.titulo}}</h2>
 							<!-- Icon Divider -->
 							<div class="divider-custom">
 								<div class="divider-custom-line"></div>
 							</div>
 							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="static/img/portfolio/cabin.png" alt="">
+							<img class="img-fluid rounded mb-5" src="{{pic_1.url}}" alt="">
 							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+							<p class="mb-5">{{pic_1.descripcion}}</p>
 							<button class="btn btn-primary" href="#" data-dismiss="modal">
 								<i class="fas fa-times fa-fw"></i>
 								Close Window
@@ -293,15 +302,15 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{pic_2.titulo}}</h2>
 							<!-- Icon Divider -->
 							<div class="divider-custom">
 								<div class="divider-custom-line"></div>
 							</div>
 							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="static/img/portfolio/cake.png" alt="">
+							<img class="img-fluid rounded mb-5" src="{{pic_2.url}}" alt="">
 							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+							<p class="mb-5">{{pic_2.descripcion}}</p>
 							<button class="btn btn-primary" href="#" data-dismiss="modal">
 								<i class="fas fa-times fa-fw"></i>
 								Close Window
@@ -328,15 +337,15 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
+							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{pic_3.titulo}}</h2>
 							<!-- Icon Divider -->
 							<div class="divider-custom">
 								<div class="divider-custom-line"></div>
 							</div>
 							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="static/img/portfolio/circus.png" alt="">
+							<img class="img-fluid rounded mb-5" src="{{pic_3.url}}" alt="">
 							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+							<p class="mb-5">{{pic_3.descripcion}}</p>
 							<button class="btn btn-primary" href="#" data-dismiss="modal">
 								<i class="fas fa-times fa-fw"></i>
 								Close Window
@@ -363,15 +372,15 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{pic_4.titulo}}</h2>
 							<!-- Icon Divider -->
 							<div class="divider-custom">
 								<div class="divider-custom-line"></div>
 							</div>
 							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="static/img/portfolio/game.png" alt="">
+							<img class="img-fluid rounded mb-5" src="{{pic_4.url}}" alt="">
 							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+							<p class="mb-5">{{pic_4.descripcion}}</p>
 							<button class="btn btn-primary" href="#" data-dismiss="modal">
 								<i class="fas fa-times fa-fw"></i>
 								Close Window
@@ -398,15 +407,15 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
+							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{pic_5.titulo}}</h2>
 							<!-- Icon Divider -->
 							<div class="divider-custom">
 								<div class="divider-custom-line"></div>
 							</div>
 							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="static/img/portfolio/safe.png" alt="">
+							<img class="img-fluid rounded mb-5" src="{{pic_5.url}}" alt="">
 							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+							<p class="mb-5">{{pic_5.descripcion}}</p>
 							<button class="btn btn-primary" href="#" data-dismiss="modal">
 								<i class="fas fa-times fa-fw"></i>
 								Close Window
@@ -433,15 +442,15 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8">
 							<!-- Portfolio Modal - Title -->
-							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
+							<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{pic_6.titulo}}</h2>
 							<!-- Icon Divider -->
 							<div class="divider-custom">
 								<div class="divider-custom-line"></div>
 							</div>
 							<!-- Portfolio Modal - Image -->
-							<img class="img-fluid rounded mb-5" src="static/img/portfolio/submarine.png" alt="">
+							<img class="img-fluid rounded mb-5" src="{{pic_6.url}}" alt="">
 							<!-- Portfolio Modal - Text -->
-							<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+							<p class="mb-5">{{pic_6.descripcion}}</p>
 							<button class="btn btn-primary" href="#" data-dismiss="modal">
 								<i class="fas fa-times fa-fw"></i>
 								Close Window
