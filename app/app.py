@@ -124,8 +124,56 @@ def index():
 
 	return render_template('index.html', nombre=nombre, slogan=slogan, foto_principal=foto_principal, descripcion=descripcion, facebook=facebook, twitter=twitter, instagram=instagram, color_fondo=color_fondo, pic_1=pic_1, pic_2=pic_2, pic_3=pic_3, pic_4=pic_4, pic_5=pic_5, pic_6=pic_6 )
 
-@app.route('/py_admin')
+@app.route('/py_admin', methods=['GET', 'POST'])
 def py_admin():
+
+	if request.method == 'POST':
+		config = ConfigSites.query.first()
+		config.foto_principal = request.form['foto_principal']
+		config.nombre = request.form['nombre']
+		config.slogan = request.form['slogan']
+		config.descripcion = request.form['descripcion']
+		config.facebook = request.form['facebook']
+		config.twitter = request.form['twitter']
+		config.instagram = request.form['instagram']
+		config.color = request.form['color_fondo']
+
+		foto_1 = Fotos.query.filter_by(id=1).first()
+		foto_2 = Fotos.query.filter_by(id=2).first()
+		foto_3 = Fotos.query.filter_by(id=3).first()
+		foto_4 = Fotos.query.filter_by(id=4).first()
+		foto_5 = Fotos.query.filter_by(id=5).first()
+		foto_6 = Fotos.query.filter_by(id=6).first()
+
+		foto_1.titulo = request.form['pic_1_title']
+		foto_1.url = request.form['pic_1_url']
+		foto_1.descripcion = request.form['pic_1_descripcion']
+
+		foto_2.titulo = request.form['pic_2_title']
+		foto_2.url = request.form['pic_2_url']
+		foto_2.descripcion = request.form['pic_2_descripcion']
+
+		foto_3.titulo = request.form['pic_3_title']
+		foto_3.url = request.form['pic_3_url']
+		foto_3.descripcion = request.form['pic_3_descripcion']
+
+		foto_4.titulo = request.form['pic_4_title']
+		foto_4.url = request.form['pic_4_url']
+		foto_4.descripcion = request.form['pic_4_descripcion']
+
+		foto_5.titulo = request.form['pic_5_title']
+		foto_5.url = request.form['pic_5_url']
+		foto_5.descripcion = request.form['pic_5_descripcion']
+
+		foto_6.titulo = request.form['pic_6_title']
+		foto_6.url = request.form['pic_6_url']
+		foto_6.descripcion = request.form['pic_6_descripcion']
+
+		db.session.flush()
+		db.session.commit()
+
+		return index()
+
 	config = ConfigSites.query.first()
 
 	foto_principal = config.foto_principal
