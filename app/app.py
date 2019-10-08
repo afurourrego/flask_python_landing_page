@@ -126,18 +126,66 @@ def index():
 
 @app.route('/py_admin', methods=['GET', 'POST'])
 def py_admin():
+	if "usuario" in session:
+		if request.method == 'POST':
+			config = ConfigSites.query.first()
+			config.foto_principal = request.form['foto_principal']
+			config.nombre = request.form['nombre']
+			config.slogan = request.form['slogan']
+			config.descripcion = request.form['descripcion']
+			config.facebook = request.form['facebook']
+			config.twitter = request.form['twitter']
+			config.instagram = request.form['instagram']
+			config.color = request.form['color_fondo']
 
-	if request.method == 'POST':
+			foto_1 = Fotos.query.filter_by(id=1).first()
+			foto_2 = Fotos.query.filter_by(id=2).first()
+			foto_3 = Fotos.query.filter_by(id=3).first()
+			foto_4 = Fotos.query.filter_by(id=4).first()
+			foto_5 = Fotos.query.filter_by(id=5).first()
+			foto_6 = Fotos.query.filter_by(id=6).first()
+
+			foto_1.titulo = request.form['pic_1_title']
+			foto_1.url = request.form['pic_1_url']
+			foto_1.descripcion = request.form['pic_1_descripcion']
+
+			foto_2.titulo = request.form['pic_2_title']
+			foto_2.url = request.form['pic_2_url']
+			foto_2.descripcion = request.form['pic_2_descripcion']
+
+			foto_3.titulo = request.form['pic_3_title']
+			foto_3.url = request.form['pic_3_url']
+			foto_3.descripcion = request.form['pic_3_descripcion']
+
+			foto_4.titulo = request.form['pic_4_title']
+			foto_4.url = request.form['pic_4_url']
+			foto_4.descripcion = request.form['pic_4_descripcion']
+
+			foto_5.titulo = request.form['pic_5_title']
+			foto_5.url = request.form['pic_5_url']
+			foto_5.descripcion = request.form['pic_5_descripcion']
+
+			foto_6.titulo = request.form['pic_6_title']
+			foto_6.url = request.form['pic_6_url']
+			foto_6.descripcion = request.form['pic_6_descripcion']
+
+			db.session.flush()
+			db.session.commit()
+
+			return index()
+
 		config = ConfigSites.query.first()
-		config.foto_principal = request.form['foto_principal']
-		config.nombre = request.form['nombre']
-		config.slogan = request.form['slogan']
-		config.descripcion = request.form['descripcion']
-		config.facebook = request.form['facebook']
-		config.twitter = request.form['twitter']
-		config.instagram = request.form['instagram']
-		config.color = request.form['color_fondo']
 
+		foto_principal = config.foto_principal
+		nombre = config.nombre
+		slogan = config.slogan
+		descripcion = config.descripcion
+		facebook = config.facebook
+		twitter = config.twitter
+		instagram = config.instagram
+		color_fondo = config.color
+
+		#Fotos
 		foto_1 = Fotos.query.filter_by(id=1).first()
 		foto_2 = Fotos.query.filter_by(id=2).first()
 		foto_3 = Fotos.query.filter_by(id=3).first()
@@ -145,97 +193,43 @@ def py_admin():
 		foto_5 = Fotos.query.filter_by(id=5).first()
 		foto_6 = Fotos.query.filter_by(id=6).first()
 
-		foto_1.titulo = request.form['pic_1_title']
-		foto_1.url = request.form['pic_1_url']
-		foto_1.descripcion = request.form['pic_1_descripcion']
+		pic_1 = Fotos()
+		pic_2 = Fotos()
+		pic_3 = Fotos()
+		pic_4 = Fotos()
+		pic_5 = Fotos()
+		pic_6 = Fotos()
 
-		foto_2.titulo = request.form['pic_2_title']
-		foto_2.url = request.form['pic_2_url']
-		foto_2.descripcion = request.form['pic_2_descripcion']
+		pic_1.titulo = foto_1.titulo
+		pic_1.url = foto_1.url
+		pic_1.descripcion = foto_1.descripcion
 
-		foto_3.titulo = request.form['pic_3_title']
-		foto_3.url = request.form['pic_3_url']
-		foto_3.descripcion = request.form['pic_3_descripcion']
+		pic_2.titulo = foto_2.titulo
+		pic_2.url = foto_2.url
+		pic_2.descripcion = foto_2.descripcion
 
-		foto_4.titulo = request.form['pic_4_title']
-		foto_4.url = request.form['pic_4_url']
-		foto_4.descripcion = request.form['pic_4_descripcion']
+		pic_3.titulo = foto_3.titulo
+		pic_3.url = foto_3.url
+		pic_3.descripcion = foto_3.descripcion
 
-		foto_5.titulo = request.form['pic_5_title']
-		foto_5.url = request.form['pic_5_url']
-		foto_5.descripcion = request.form['pic_5_descripcion']
+		pic_4.titulo = foto_4.titulo
+		pic_4.url = foto_4.url
+		pic_4.descripcion = foto_4.descripcion
 
-		foto_6.titulo = request.form['pic_6_title']
-		foto_6.url = request.form['pic_6_url']
-		foto_6.descripcion = request.form['pic_6_descripcion']
+		pic_5.titulo = foto_5.titulo
+		pic_5.url = foto_5.url
+		pic_5.descripcion = foto_5.descripcion
 
-		db.session.flush()
-		db.session.commit()
+		pic_6.titulo = foto_6.titulo
+		pic_6.url = foto_6.url
+		pic_6.descripcion = foto_6.descripcion
 
-		return index()
+		return render_template('py_admin.html', nombre=nombre, slogan=slogan, foto_principal=foto_principal, descripcion=descripcion, facebook=facebook, twitter=twitter, instagram=instagram, color_fondo=color_fondo, pic_1=pic_1, pic_2=pic_2, pic_3=pic_3, pic_4=pic_4, pic_5=pic_5, pic_6=pic_6 )
+	return iniciar_sesion()
 
-	config = ConfigSites.query.first()
-
-	foto_principal = config.foto_principal
-	nombre = config.nombre
-	slogan = config.slogan
-	descripcion = config.descripcion
-	facebook = config.facebook
-	twitter = config.twitter
-	instagram = config.instagram
-	color_fondo = config.color
-
-	#Fotos
-	foto_1 = Fotos.query.filter_by(id=1).first()
-	foto_2 = Fotos.query.filter_by(id=2).first()
-	foto_3 = Fotos.query.filter_by(id=3).first()
-	foto_4 = Fotos.query.filter_by(id=4).first()
-	foto_5 = Fotos.query.filter_by(id=5).first()
-	foto_6 = Fotos.query.filter_by(id=6).first()
-
-	pic_1 = Fotos()
-	pic_2 = Fotos()
-	pic_3 = Fotos()
-	pic_4 = Fotos()
-	pic_5 = Fotos()
-	pic_6 = Fotos()
-
-	pic_1.titulo = foto_1.titulo
-	pic_1.url = foto_1.url
-	pic_1.descripcion = foto_1.descripcion
-
-	pic_2.titulo = foto_2.titulo
-	pic_2.url = foto_2.url
-	pic_2.descripcion = foto_2.descripcion
-
-	pic_3.titulo = foto_3.titulo
-	pic_3.url = foto_3.url
-	pic_3.descripcion = foto_3.descripcion
-
-	pic_4.titulo = foto_4.titulo
-	pic_4.url = foto_4.url
-	pic_4.descripcion = foto_4.descripcion
-
-	pic_5.titulo = foto_5.titulo
-	pic_5.url = foto_5.url
-	pic_5.descripcion = foto_5.descripcion
-
-	pic_6.titulo = foto_6.titulo
-	pic_6.url = foto_6.url
-	pic_6.descripcion = foto_6.descripcion
-
-	return render_template('py_admin.html', nombre=nombre, slogan=slogan, foto_principal=foto_principal, descripcion=descripcion, facebook=facebook, twitter=twitter, instagram=instagram, color_fondo=color_fondo, pic_1=pic_1, pic_2=pic_2, pic_3=pic_3, pic_4=pic_4, pic_5=pic_5, pic_6=pic_6 )
 
 
 ################################################################
-
-@app.route('/buscar')
-def buscar():
-	pass
-
-def validar_datos(usuario):
-	if len(usuario) <= 5:
-		return "Usuario No Válido"
 
 @app.route('/registrarse', methods=['GET', 'POST'])
 def registrarse():
@@ -259,7 +253,7 @@ def iniciar_sesion():
 
 		if usuario and check_password_hash(usuario.contrasena,contrasena):
 			session['usuario'] = usuario.usuario
-			return "Inicio de Sesión Exitoso"
+			return py_admin()
 		return "Los datos ingresados no son válidos"
 	return render_template('iniciar_sesion.html')
 
