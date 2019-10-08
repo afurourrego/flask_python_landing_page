@@ -35,8 +35,40 @@ class Fotos(db.Model):
 db.init_app(app)
 db.create_all()
 
+def initial_config():
+	if Usuarios.query.filter_by(usuario="admin").first() is None:
+		contrasena_encriptada = generate_password_hash("123456", method='sha256')
+		nuevo_usuario = Usuarios(usuario="admin",contrasena=contrasena_encriptada)
+		db.session.add(nuevo_usuario)
+		db.session.commit()
+	if ConfigSites.query.first() is None:
+		nuevo_sitio = ConfigSites(foto_principal = 'https://icon-library.net/images/avatar-icon-png/avatar-icon-png-8.jpg', nombre = 'NOMBRE CANDIDATO', slogan = 'Slogan de Campaña', descripcion = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', facebook = '#', twitter = '#', instagram = '#', color = '#1abc9c')
+		db.session.add(nuevo_sitio)
+		db.session.commit()
+	if Fotos.query.first() is None:
+		nueva_foto_1 = Fotos(titulo ='TITULO PUBLICACION', url ='https://www.pngkey.com/png/full/34-345766_crowd-clipart-person-icon-people-round-icon-png.png', descripcion ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.')
+		db.session.add(nueva_foto_1)
+		db.session.commit()
+		nueva_foto_2 = Fotos(titulo ='TITULO PUBLICACION', url ='https://www.pngkey.com/png/full/34-345766_crowd-clipart-person-icon-people-round-icon-png.png', descripcion ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.')
+		db.session.add(nueva_foto_2)
+		db.session.commit()
+		nueva_foto_3 = Fotos(titulo ='TITULO PUBLICACION', url ='https://www.pngkey.com/png/full/34-345766_crowd-clipart-person-icon-people-round-icon-png.png', descripcion ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.')
+		db.session.add(nueva_foto_3)
+		db.session.commit()
+		nueva_foto_4 = Fotos(titulo ='TITULO PUBLICACION', url ='https://www.pngkey.com/png/full/34-345766_crowd-clipart-person-icon-people-round-icon-png.png', descripcion ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.')
+		db.session.add(nueva_foto_4)
+		db.session.commit()
+		nueva_foto_5 = Fotos(titulo ='TITULO PUBLICACION', url ='https://www.pngkey.com/png/full/34-345766_crowd-clipart-person-icon-people-round-icon-png.png', descripcion ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.')
+		db.session.add(nueva_foto_5)
+		db.session.commit()
+		nueva_foto_6 = Fotos(titulo ='TITULO PUBLICACION', url ='https://www.pngkey.com/png/full/34-345766_crowd-clipart-person-icon-people-round-icon-png.png', descripcion ='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.')
+		db.session.add(nueva_foto_6)
+		db.session.commit()
+
+
 @app.route('/')
 def index():
+	initial_config()
 	config = ConfigSites.query.first()
 
 	if config and config.foto_principal:
@@ -153,8 +185,8 @@ def index():
 @app.route('/py_admin')
 def py_admin():
 	if "usuario" in session:
-		return "Estas logueado %s" % escape(session['usuario'])
-	return render_template('iniciar_sesion.html')
+		return render_template('py_admin.html')
+	return render_template('py_admin.html')
 
 ################################################################
 
@@ -192,13 +224,5 @@ def iniciar_sesion():
 		return "Los datos ingresados no son válidos"
 	return render_template('iniciar_sesion.html')
 
-@app.route('/home')
-def home():
-	if "usuario" in session:
-		return "Estas logueado %s" % escape(session['usuario'])
-	return "debes iniciar sesión"
-
-
 if __name__ == '__main__':
-	db.create_all()
 	app.run(debug=True)

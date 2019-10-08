@@ -3,14 +3,29 @@
 Iniciar Sesión
 {% endblock %}
 {% block content %}
-<h1>Formulario de Iniciar Sesión</h1>
-<form action="{{ url_for('iniciar_sesion') }}" method="post">
-	<p>
-		<input type="text" name="usuario">
-	</p>
-	<p>
-		<input type="password" name="contrasena">
-	</p>
-	<input type="submit" value="Iniciar Sesión">
-</form>
+
+
+<style media="screen">
+	.card{
+		margin-top: 160px !important;
+		padding: 45px;
+	}
+	body {
+		background: #d7d7d7 !important;
+	}
+</style>
+
+<div class="container d-flex align-items-center flex-column">
+	<div class="card col-md-6 col-lg-4 align-items-center">
+		<form action="{{ url_for('iniciar_sesion') }}" method="post">
+			<p>
+				<input type="text" name="usuario">
+			</p>
+			<p>
+				<input type="password" name="contrasena">
+			</p>
+			<input type="submit" value="Iniciar Sesión">
+		</form>
+	</div>
+</div>
 {% endblock %}

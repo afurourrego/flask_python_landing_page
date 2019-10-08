@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+{% block title %}
+Administrador
+{% endblock %}
+{% block content %}
+
+
+<style media="screen">
+	.card{
+		margin-top: 160px !important;
+		padding: 45px;
+	}
+	body {
+		background: #d7d7d7 !important;
+	}
+</style>
+
+<div class="container d-flex align-items-center flex-column">
+	<div class="card col-md-10 col-lg-10 align-items-center">
+		<form action="{{ url_for('py_admin') }}" method="post">
+
+			<div class="row">
+				<p class="col-12 col-md-4">
+					<label for="nombre" class="col-12">Nombre</label>
+					<input type="text" name="nombre" value="oli">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Slogan</label>
+					<input type="text" name="slogan">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Foto Principal</label>
+					<input type="text" name="foto_principal">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Descripción</label>
+					<input type="text" name="descripcion">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Facebook</label>
+					<input type="text" name="facebook">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Twitter</label>
+					<input type="text" name="twitter">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Instagram</label>
+					<input type="text" name="instagram">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">Color de Fondo (RGB)</label>
+					<input type="text" name="color_fondo">
+				</p>
+				<p class="col-12 col-md-4">
+				</p>
+
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_1_title</label>
+					<input type="text" name="pic_1_title">
+				</p>
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_1_url</label>
+					<input type="text" name="pic_1_url">
+				</p>
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_1_descripcion</label>
+					<input type="text" name="pic_1_descripcion">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_2_title</label>
+					<input type="text" name="pic_2_title">
+				</p>
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_2_url</label>
+					<input type="text" name="pic_2_url">
+				</p>
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_2_descripcion</label>
+					<input type="text" name="pic_2_descripcion">
+				</p>
+
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_3_title</label>
+					<input type="text" name="pic_3_title">
+				</p>
+				<p class="col-12 col-md-4">
+					<label for="slogan", class="col-12">pic_3_url</label>
+						<input type="text" name="pic_3_url">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_3_descripcion</label>
+						<input type="text" name="pic_3_descripcion">
+					</p>
+
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_4_title</label>
+						<input type="text" name="pic_4_title">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_4_url</label>
+						<input type="text" name="pic_4_url">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_4_descripcion</label>
+						<input type="text" name="pic_4_descripcion">
+					</p>
+
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_5_title</label>
+						<input type="text" name="pic_5_title">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_5_url</label>
+						<input type="text" name="pic_5_url">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_5_descripcion</label>
+						<input type="text" name="pic_5_descripcion">
+					</p>
+
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_6_title</label>
+						<input type="text" name="pic_6_title">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_6_url</label>
+						<input type="text" name="pic_6_url">
+					</p>
+					<p class="col-12 col-md-4">
+						<label for="slogan", class="col-12">pic_6_descripcion</label>
+						<input type="text" name="pic_6_descripcion">
+					</p>
+			</div>
+
+			<input type="submit" value="Guardar">
+		</form>
+	</div>
+</div>
+{% endblock %}
