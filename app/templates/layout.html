@@ -16,6 +16,7 @@
 
 		<!-- Theme CSS -->
 	  <link href="static/css/freelancer.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="{{url_for('static', filename='css/estilos.css')}}">
 
 	</head>
 	<body id="page-top">
@@ -31,10 +32,10 @@
 							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:5000/#page-top">Inicio</a>
 						</li>
 						<li class="nav-item mx-0 mx-lg-1">
-							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:5000/#productos_servicios">Productos y Servicios</a>
+							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:5000/#obras_servicios">Obras y Servicios</a>
 						</li>
 						<li class="nav-item mx-0 mx-lg-1">
-							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:5000/#about">Quienes Somos</a>
+							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:5000/#about">Sobre Mi</a>
 						</li>
 						<li class="nav-item mx-0 mx-lg-1">
 							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:5000/#contact">contacto</a>
@@ -46,10 +47,19 @@
 				</div>
 			</div>
 		</nav>
-
+		{% with messages = get_flashed_messages(with_categories=True) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="container d-flex align-items-center flex-column">
+						<div class="{{category}} card col-md-10 col-lg-10 align-items-center">
+							{{ message }}
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
 		{% block content %}
 		{% endblock %}
-
 
 	  <!-- Bootstrap core JavaScript -->
 	  <script src="static/vendor/jquery/jquery.min.js"></script>

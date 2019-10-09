@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, make_response, escape
+from flask import Flask, render_template, request, session, make_response, escape, url_for, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -172,6 +172,7 @@ def py_admin():
 			db.session.flush()
 			db.session.commit()
 
+			flash("Sitio actualizado con exito", "notify")
 			return index()
 
 		config = ConfigSites.query.first()
@@ -233,16 +234,18 @@ def py_admin():
 
 @app.route('/registrarse', methods=['GET', 'POST'])
 def registrarse():
-	if request.method == 'POST':
-		usuario = request.form['usuario']
-		contrasena = request.form['contrasena']
+	if "usuario" in session:
+		if request.method == 'POST':
+			usuario = request.form['usuario']
+			contrasena = request.form['contrasena']
 
-		contrasena_encriptada = generate_password_hash(contrasena,method='sha256')
-		nuevo_usuario = Usuarios(usuario=usuario,contrasena=contrasena_encriptada)
-		db.session.add(nuevo_usuario)
-		db.session.commit()
-		return "Usuario registrado"
-	return render_template('registrarse.html')
+			contrasena_encriptada = generate_password_hash(contrasena,method='sha256')
+			nuevo_usuario = Usuarios(usuario=usuario,contrasena=contrasena_encriptada)
+			db.session.add(nuevo_usuario)
+			db.session.commit()
+			return "Usuario registrado"
+		return render_template('registrarse.html')
+	return iniciar_sesion()
 
 @app.route('/iniciar_sesion', methods=['GET', 'POST'])
 def iniciar_sesion():
@@ -253,8 +256,9 @@ def iniciar_sesion():
 
 		if usuario and check_password_hash(usuario.contrasena,contrasena):
 			session['usuario'] = usuario.usuario
-			return py_admin()
-		return "Los datos ingresados no son válidos"
+			flash("Inicio de sesion exitoso", "notify")
+			return redirect(url_for('py_admin'))
+		flash("Los datos ingresados no son válidos", "alert")
 	return render_template('iniciar_sesion.html')
 
 if __name__ == '__main__':

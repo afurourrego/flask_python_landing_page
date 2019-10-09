@@ -9701,7 +9701,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .masthead {
-  padding-top: calc(6rem + 74px);
+  padding-top: calc(6rem);
   padding-bottom: 6rem;
 }
 

@@ -1,0 +1,30 @@
+.bg-primary{
+  background-color: {{color_fondo}} !important;
+}
+.portfolio .portfolio-item .portfolio-item-caption {
+  background-color: {{color_fondo}} !important;
+}
+.btn-primary {
+  background-color: {{color_fondo}} !important;
+  border-color: {{color_fondo}} !important;
+}
+
+.notify {
+  background-color: #d2ffd3 !important;
+  color: #207832 !important;
+  padding: 8px !important;
+}
+.alert {
+  background-color: #ffd2d2 !important;
+  color: #782020 !important;
+  padding: 8px !important;
+}
+
+body {
+  padding-top: 100px;
+}
+
+.card{
+  margin-top: 10px !important;
+  padding: 45px;
+}
